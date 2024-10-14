@@ -4,6 +4,10 @@
 
 <script>
 export default {
-  name: 'MainHome'
+  name: 'MainHome',
+  mounted() {
+    console.log('MainHome component mounted');
+  }
 };
 </script>
+

@@ -6,6 +6,9 @@
 
 <script>
 export default {
-  name: 'UserDashboard'
+  name: 'UserDashboard',
+  mounted() {
+    console.log('UserDashboard component mounted');
+  }
 };
 </script>

@@ -4,6 +4,9 @@
 
 <script>
 export default {
-  name: 'AllCourses'
+  name: 'AllCourses',
+  mounted() {
+    console.log('AllCourses component mounted');
+  }
 };
 </script>
