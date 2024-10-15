@@ -2,20 +2,20 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import MainHome from './components/MainHome.vue';
-import UserDashboard from './components/UserDashboard.vue';
-import AllCourses from './components/AllCourses.vue';
 import UserLogin from './components/UserLogin.vue';
+import UserDashboard from './components/UserDashboard.vue';
+import UserRegistration from './components/UserRegistration.vue';
 
 const routes = [
   { path: '/', component: MainHome },
+  { path: '/login', component: UserLogin },
   { path: '/dashboard', component: UserDashboard },
-  { path: '/courses', component: AllCourses },
-  { path: '/login', component: UserLogin }
+  { path: '/registration', component: UserRegistration },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
 const app = createApp(App);
