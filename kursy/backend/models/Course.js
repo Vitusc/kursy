@@ -9,8 +9,8 @@ const CourseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  content: {
-    type: String,
+  image: {
+    type: String, // URL do obrazka
     required: true,
   },
 });

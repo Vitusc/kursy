@@ -5,6 +5,7 @@
       <router-link to="/login">Logowanie</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
       <router-link to="/registration">Rejestracja</router-link>
+      <router-link to="/courses">Wszystkie kursy</router-link>
     </nav>
     <router-view></router-view>
   </div>
