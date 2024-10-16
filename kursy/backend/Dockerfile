@@ -1,23 +1,29 @@
-# Wybierz obraz Node.js
-FROM node:18
+# Etap 1: Budowanie zależności
+FROM node:18 AS build-stage
 
-# Ustaw katalog roboczy w kontenerze
+# Ustaw katalog roboczy
 WORKDIR /backend
 
-# Skopiuj plik package.json i package-lock.json
+# Skopiuj package.json i package-lock.json i zainstaluj zależności, w tym devDependencies
 COPY package*.json ./
-
-# Zainstaluj zależności
 RUN npm install
 
-# Skopiuj cały projekt do katalogu roboczego
+# Skopiuj resztę kodu aplikacji
 COPY . .
 
-# Ustaw zmienną środowiskową
-ENV PORT=5000
+# Etap 2: Stworzenie obrazu produkcyjnego
+FROM node:18-alpine AS production-stage
 
-# Otwórz port aplikacji
+# Ustaw katalog roboczy
+WORKDIR /backend
+
+# Skopiuj tylko pliki z zależnościami produkcyjnymi z etapu build-stage
+COPY --from=build-stage /backend/node_modules ./node_modules
+COPY --from=build-stage /backend/package*.json ./
+COPY --from=build-stage /backend .
+
+# Ustaw port
 EXPOSE 5000
 
-# Uruchom aplikację
-CMD ["node", "server.js"]
+# Uruchom serwer aplikacji
+CMD ["npm", "start"]
